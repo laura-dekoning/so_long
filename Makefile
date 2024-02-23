@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/02/23 17:46:14 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/02/23 17:48:49 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,14 @@ SRC_FILES	:=
 OBJ_DIR		:=	obj
 OBJ_FILES	:=	$(addprefix obj/, $(SRC_FILES:.c=.o))
 
-NAME		:=	libft.a
+NAME		:=	so_long
+LIBFT		:=	libft.a
 
 .PHONY : all clean fclean re
 
 all: $(NAME)
 
-$(NAME) : $(OBJ_FILES) $(INCL)
+$(NAME) : $(OBJ_FILES) $(INCL) $(LIBFT)
 	ar -rcs $(NAME) $?
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
