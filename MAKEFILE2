@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         ::::::::             #
-#    Makefile                                           :+:    :+:             #
+#    MAKEFILE2                                          :+:    :+:             #
 #                                                      +:+                     #
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/02/29 16:43:41 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/02/29 16:09:13 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,44 +15,49 @@ NAME		:=	so_long
 CC			:=	cc -Ofast
 CFLAGS		:=	-Wall -Werror -Wextra -g
 
-LIBFT		:=	./lib/libft
-LIBMLX		:=	./lib/MLX42
-LIBFT_A		:=	$(LIBFT)/libft.a
-MLX42_A		:=	$(LIBMLX)/build/libmlx42.a
-MLX_FLAGS	:=	-ldl -lglfw -pthread -lm
-
-INCL_SO_LONG:=	./incl
-INCLS_LIBFT	:=	$(LIBFT)/incl
-INCLS_MLX42	:=	$(LIBMLX)/include/MLX42
-INCLUDES	:=	-I $(INCL_SO_LONG) -I $(INCLS_LIBFT) -I $(INCLS_MLX42)
-
 SRC_DIR		:=	src
-SRC_FILES	:=	main.c
-SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
-
 OBJ_DIR		:=	obj
-OBJ_FILES	:=	$(SRC_FILES:.c=.o)
-OBJ			:=	$(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
+
+SO_LONG_H	:=	incl
+
+LIBFT_DIR	:=	./lib/libft
+LIBFT_H		:=	$(LIBFT_DIR)/incl
+LIBFT_A		:=	$(LIBFT_DIR)/libft.a
+
+MLX_DIR		:=	./lib/MLX42
+MLX_H		:=	$(MLX_DIR)/include
+MLX_A		:=	$(MLX_DIR)/build/libmlx42.a
+
+LIBS		:=	$(LIBFT_DIR)/libft.a $(MLX_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm
+
+HEADERS		:=	-I $(SO_LONG_H) -I $(LIBFT_H) -I $(MLX_H)
+
+SRC_FILES	:=	$(addprefix $(SRC_DIR)/, \
+				main.c)
+
+OBJ_FILES	:=	$(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+
+LIBFT		:=	libft.a
 
 .PHONY : all clean fclean re
 
-all: $(NAME)
+all: $(MLX_A) $(LIBFT_A) $(NAME)
 
-$(MLX42_A):
+$(MLX_A): $(MLX_H)
+	make $(MLX_DIR) -B $(MLX_DIR)/build && make -C $(MLX_DIR)/build -j4 > /dev/null
+
+$(LIBFT_A): $(LIBFT_H)
+	make -C $(LIBFT_DIR) > /dev/null
+
+submodule:
 	git submodule update --init --recursive --remote
-	cmake $(LIBMLX) -B $(LIBMLX)/build
-	make -C $(LIBMLX)/build -j4
 
-$(LIBFT_A):
-	git submodule update --init --recursive --remote
-	make -C $(LIBFT)
-
-$(NAME) : $(OBJ) $(MLX42_A) $(LIBFT_A)
-	$(CC) $(OBJ) $(CFLAGS) $(INCLUDES) $(MLX42_A) $(LIBFT_A) $(MLX_FLAGS) -o $(NAME)
+$(NAME) : $(OBJ_FILES)
+	$(CC) $(OBJ_FILES) $(CFLAGS) $(HEADERS) $(LIBS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(HEADERS) -c $< -o $ 
 
 norminette:
 	echo "${CYAN}🧐 Checking the Norm...${RESET}"
@@ -60,6 +65,7 @@ norminette:
 	echo "${GREEN} Norm-i-netting complete. Files are NORM PROOF!${RESET}" 
 
 clean:
+	rm -rf $(OBJ_FILES)
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
@@ -67,7 +73,7 @@ fclean: clean
 
 re: fclean all
 
-## Colours ##
+## Colors ##
 RESET	:= \033[0m
 RED		:= \033[1;91m
 GREEN	:= \033[1;92m
