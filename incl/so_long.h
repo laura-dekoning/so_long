@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/05 09:00:46 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/05 21:46:32 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,18 @@ typedef struct	s_point
 	int			y;
 }				t_point;
 
-typedef struct	s_map
+typedef struct	s_game
 {
+	char		**map;
 	int			width;
 	int			height;
+	t_point		player_pos;
+	t_point		exit_pos;
 	int			collectables;
-	t_player	player;
-	t_point		exit;
-	char		**map;
-}				t_map;
-
-typedef struct s_player
-{
-	t_point		player;
 	int			collected;
 	int			steps;
-}				t_player;
+}				t_game;
+
 
 
 #endif
