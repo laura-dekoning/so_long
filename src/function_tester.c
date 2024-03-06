@@ -1,13 +1,28 @@
 #include "so_long.h"
 
-int	count_rows(char **map_as_d_array)
+t_point	find_position(char **map_as_d_array, char c)
 {
-	int	i;
+	t_point	position;
+	int		x;
+	int		y;
 
-	i = 0;
-	while (map_as_d_array[i] != NULL)
-		i++;
-	return (i);
+	y = 0;
+	while (map_as_d_array[y] != NULL)
+	{
+		x = 0;
+		while (map_as_d_array[y][x] != '\0')
+		{
+			if (map_as_d_array[y][x] == c)
+			{
+				position.x = x;
+				position.y = y;
+				return (position);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (position);
 }
 
 char	*read_mapfile(const char *file)
@@ -68,9 +83,9 @@ int	main(int argc, char **argv)
 	}
 	char	**map;
 	map = initialize_data(file);
-	int		rows;
-	rows = count_rows(map);
-	ft_printf("[%i]\n", rows);
+	t_point		test;
+	test = find_position(map, 'E');
+	ft_printf("[%i][%i]\n", test.y, test.x);
 
 
 	return (0);
