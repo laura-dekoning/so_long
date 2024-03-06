@@ -10,6 +10,26 @@ int	count_rows(char **map_as_d_array)
 		i++;
 	return (i);
 }
+int	find_amount_collectables(char **map_as_d_array)
+{
+	int	c;
+	int	x;
+	int	y;
+
+	y = 0;
+	while (map_as_d_array[y] != NULL)
+	{
+		x = 0;
+		while (map_as_d_array[y][x] != '\0')
+		{
+			if (map_as_d_array[y][x] == 'C')
+				c++;
+			x++;
+		}
+		y++;
+	}
+	return (c);
+}
 
 t_point	find_position(char **map_as_d_array, char c)
 {
@@ -52,6 +72,9 @@ t_game	*initialize_struct(char **map_as_d_array)
 	game->height = height;
 	game->player_pos = find_position(map_as_d_array, 'P');
 	game->exit_pos = find_position(map_as_d_array, 'E');
+	game->collectables = find_amount_collectables(map_as_d_array);
+	game->collected = 0;
+	game->steps = 0;
 	return (game);
 }
 
