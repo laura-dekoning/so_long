@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        ::::::::            */
-/*   so_long.c                                          :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/06 20:18:32 by lade-kon      ########   odam.nl         */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "so_long.h"
 
 
@@ -51,28 +39,34 @@ t_point	find_position(char **map_as_d_array, char c)
 t_game	*initialize_struct(char **map_as_d_array)
 {
 	t_game	*game;
+	int		width;
+	int		height;
 
+	game = (t_game *)ft_calloc(1, sizeof(t_game));
+	if (!game)
+		error_message("Memory allocation failed.\n");
+	width = ft_strlen(map_as_d_array[0]);
+	height = count_rows(map_as_d_array);
 	game->map = map_as_d_array;
-	game->width = ft_strlen(map_as_d_array[0]);
-	game->height = count_rows(map_as_d_array);
-	game->player_pos = find_position(map_as_d_array, "P");
-	game->exit_pos = find_position(map_as_d_array, "E");
+	game->width = width;
+	game->height = height;
+	game->player_pos = find_position(map_as_d_array, 'P');
+	game->exit_pos = find_position(map_as_d_array, 'E');
 	return (game);
 }
 
 t_game	*initialize_data(const char *file)
 {
-	t_game	*game;
+	t_game	*data;
 	char	*map_as_str;
 	char	**map_as_d_array;
 
 	map_as_str = read_mapfile(file);
 	map_as_d_array = ft_split(map_as_str, '\n');
+	data = initialize_struct(map_as_d_array);
 
-	initialize_struct(game);
 
-
-	return (map_as_d_array);
+	return (data);
 }
 
 char	*read_mapfile(const char *file)
