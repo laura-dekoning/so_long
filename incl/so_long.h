@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/07 22:59:31 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/07 23:23:09 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ void	check_empty_lines(char *map);
 void	check_empty_file(char *map);
 void	check_walls(char **map, int width, int height);
 void	check_if_map_rectangular(char **map, int width);
+void	invalid_content_message(int p, int e, int c);
 
 #endif
