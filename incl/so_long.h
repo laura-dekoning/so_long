@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/06 21:38:47 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/07 22:59:31 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,18 @@ typedef struct	s_game
 
 /*MAP*/
 char	*read_mapfile(const char *file);
-// t_game	*initialize_data(const char *file);
-char	**initialize_data(const char *file);
-t_game	*initialize_struct(char **map_as_d_array);
+t_game	*initialize_data(const char *file);
+t_game	*initialize_struct(char **map_as_d_array, int width, int height);
 int		count_rows(char **map_as_d_array);
 
 void	error_message(char *message);
 
+void	test_initialisation(t_game *game);
+void	check_content(char *map);
+void	check_invalid_content(int i);
+void	check_empty_lines(char *map);
+void	check_empty_file(char *map);
+void	check_walls(char **map, int width, int height);
+void	check_if_map_rectangular(char **map, int width);
 
 #endif

@@ -1,5 +1,16 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   initialize_data.c                                  :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/03/07 23:09:27 by lade-kon      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "so_long.h"
 
 int	count_rows(char **map_as_d_array)
 {
@@ -57,17 +68,13 @@ t_point	find_position(char **map_as_d_array, char c)
 	return (position);
 }
 
-t_game	*initialize_struct(char **map_as_d_array)
+t_game	*initialize_struct(char **map_as_d_array, int width, int height)
 {
 	t_game	*game;
-	int		width;
-	int		height;
 
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		error_message("Memory allocation failed.\n");
-	width = ft_strlen(map_as_d_array[0]);
-	height = count_rows(map_as_d_array);
 	game->map = map_as_d_array;
 	game->width = width;
 	game->height = height;
@@ -84,11 +91,19 @@ t_game	*initialize_data(const char *file)
 	t_game	*data;
 	char	*map_as_str;
 	char	**map_as_d_array;
+	int		width;
+	int		height;
 
 	map_as_str = read_mapfile(file);
+	check_empty_file(map_as_str);
+	check_empty_lines(map_as_str);
+	check_content(map_as_str);
 	map_as_d_array = ft_split(map_as_str, '\n');
-	data = initialize_struct(map_as_d_array);
-
+	width = ft_strlen(map_as_d_array[0]);
+	height = count_rows(map_as_d_array);
+	check_if_map_rectangular(map_as_d_array, width);
+	check_walls(map_as_d_array, width, height);
+	data = initialize_struct(map_as_d_array, width, height);
 
 	return (data);
 }
@@ -114,37 +129,4 @@ char	*read_mapfile(const char *file)
 	}
 	close(fd);
 	return (map_as_str);
-}
-
-int	main(int argc, char **argv)
-{
-	t_game		*game;
-	const char	*file;
-	int			len;
-
-	if (argc != 2)
-	{
-		ft_printf("Incorrect amount of arguments\n");
-		return (1);
-	}
-
-	file = argv[1];
-	len = ft_strlen(file);
-	if (len < 4 || (!ft_strncmp(file + len - 4, ".ber", 4) == 0))
-	{
-		ft_printf("Incorrect file format! Please provide a .ber file.\n");
-		return (1);
-	}
-	game = initialize_data(file);
-	//Test if data is correctly initiliazed//
-	ft_printf("Width:[%i]\n", game->width);
-	ft_printf("Height:[%i]\n", game->height);
-	ft_printf("Collectables:[%i]\n", game->collectables);
-	ft_printf("Collected:[%i]\n", game->collected);
-	ft_printf("Steps:[%i]\n", game->steps);
-	ft_printf("Player position:[%i][%i]\n", game->player_pos.y, game->player_pos.x);
-	ft_printf("Exit position:[%i][%i]\n", game->exit_pos.y, game->exit_pos.x);
-
-
-	return (0);
 }

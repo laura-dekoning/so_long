@@ -6,13 +6,13 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/03/06 21:40:29 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/03/07 22:43:52 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	so_long
 
-CC			:=	cc -Ofast
+CC			:=	cc -Ofast -g
 CFLAGS		:=	-Wall -Werror -Wextra -g
 
 LIBFT_DIR	:=	lib/libft
@@ -27,7 +27,11 @@ INCLS_MLX42	:=	$(MLX_DIR)/include/MLX42
 INCLUDES	:=	-I $(INCL_SO_LONG) -I $(INCLS_LIBFT) -I $(INCLS_MLX42)
 
 SRC_DIR		:=	src
-SRC_FILES	:=	function_tester.c
+SRC_FILES	:=	so_long.c \
+				initialize_data.c \
+				utils.c \
+				check_map.c \
+				print_tests.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
 OBJ_DIR		:=	obj
