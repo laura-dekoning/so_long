@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/07 13:16:11 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/08 10:04:58 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		ft_printf("Incorrect file format! Please provide a .ber file.\n");
 		return (1);
 	}
-	game = initialize_data(file);
+	game = init_game_data(file);
 	test_initialisation(game);
 
 

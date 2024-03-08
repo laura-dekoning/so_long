@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/07 23:23:40 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/08 10:08:47 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,6 @@ void	check_invalid_content(int i)
 {
 	if (!(ft_strchr("PEC01\n", i)))
 		error_message("Map contains invalid characters");
-}
-
-void	invalid_content_message(int p, int e, int c)
-{
-	if ((p != 1 || e != 1) && c < 1)
-		error_message("Map content is not valid!" \
-		"Map contains duplicates and no collectables.");
-	if (c < 1)
-		error_message("Map content is not valid! No collectables available.");
-	if (p != 1 || e != 1)
-		error_message("Map content is not valid! Map contains duplicates.");
 }
 
 void	check_content(char *map)

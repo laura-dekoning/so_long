@@ -6,69 +6,13 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/07 23:09:27 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/08 10:14:57 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_rows(char **map_as_d_array)
-{
-	int	i;
-
-	i = 0;
-	while (map_as_d_array[i] != NULL)
-		i++;
-	return (i);
-}
-int	find_amount_collectables(char **map_as_d_array)
-{
-	int	c;
-	int	x;
-	int	y;
-
-	y = 0;
-	c = 0;
-	while (map_as_d_array[y] != NULL)
-	{
-		x = 0;
-		while (map_as_d_array[y][x] != '\0')
-		{
-			if (map_as_d_array[y][x] == 'C')
-				c++;
-			x++;
-		}
-		y++;
-	}
-	return (c);
-}
-
-t_point	find_position(char **map_as_d_array, char c)
-{
-	t_point	position;
-	int		x;
-	int		y;
-
-	y = 0;
-	while (map_as_d_array[y] != NULL)
-	{
-		x = 0;
-		while (map_as_d_array[y][x] != '\0')
-		{
-			if (map_as_d_array[y][x] == c)
-			{
-				position.x = x;
-				position.y = y;
-				return (position);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (position);
-}
-
-t_game	*initialize_struct(char **map_as_d_array, int width, int height)
+t_game	*init_game_struct(char **map_as_d_array, int width, int height)
 {
 	t_game	*game;
 
@@ -86,7 +30,7 @@ t_game	*initialize_struct(char **map_as_d_array, int width, int height)
 	return (game);
 }
 
-t_game	*initialize_data(const char *file)
+t_game	*init_game_data(const char *file)
 {
 	t_game	*data;
 	char	*map_as_str;
@@ -103,7 +47,7 @@ t_game	*initialize_data(const char *file)
 	height = count_rows(map_as_d_array);
 	check_if_map_rectangular(map_as_d_array, width);
 	check_walls(map_as_d_array, width, height);
-	data = initialize_struct(map_as_d_array, width, height);
+	data = init_game_struct(map_as_d_array, width, height);
 
 	return (data);
 }

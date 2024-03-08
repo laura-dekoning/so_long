@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/03/07 22:43:52 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/03/08 10:15:28 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,10 @@ INCLUDES	:=	-I $(INCL_SO_LONG) -I $(INCLS_LIBFT) -I $(INCLS_MLX42)
 
 SRC_DIR		:=	src
 SRC_FILES	:=	so_long.c \
-				initialize_data.c \
-				utils.c \
 				check_map.c \
+				error.c \
+				map_utils.c \
+				initialize_data.c \
 				print_tests.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

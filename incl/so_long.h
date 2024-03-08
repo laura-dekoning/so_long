@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/07 23:23:09 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/08 10:17:05 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ typedef struct	s_game
 
 /*MAP*/
 char	*read_mapfile(const char *file);
-t_game	*initialize_data(const char *file);
-t_game	*initialize_struct(char **map_as_d_array, int width, int height);
+t_game	*init_game_data(const char *file);
+t_game	*init_game_struct(char **map_as_d_array, int width, int height);
 int		count_rows(char **map_as_d_array);
+t_point	find_position(char **map_as_d_array, char c);
+int		find_amount_collectables(char **map_as_d_array);
 
 void	error_message(char *message);
 
