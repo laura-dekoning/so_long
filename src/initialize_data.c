@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/08 10:14:57 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/11 21:46:12 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ t_game	*init_game_data(const char *file)
 	check_if_map_rectangular(map_as_d_array, width);
 	check_walls(map_as_d_array, width, height);
 	data = init_game_struct(map_as_d_array, width, height);
-
+	flood_fill(data, data->player_pos.x, data->player_pos.y);
+	printf("Floodfill completed succesfully!\n");
 	return (data);
 }
 

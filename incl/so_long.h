@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/08 10:17:05 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/11 21:44:17 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ int		find_amount_collectables(char **map_as_d_array);
 
 void	error_message(char *message);
 
-void	test_initialisation(t_game *game);
 void	check_content(char *map);
 void	check_invalid_content(int i);
 void	check_empty_lines(char *map);
@@ -52,5 +51,12 @@ void	check_empty_file(char *map);
 void	check_walls(char **map, int width, int height);
 void	check_if_map_rectangular(char **map, int width);
 void	invalid_content_message(int p, int e, int c);
+int		flood_fill(t_game *game, int x, int y);
+
+
+void	test_initialisation(t_game *game);
+void	map_test(char **map);
+void	print_map(char **map);
+
 
 #endif

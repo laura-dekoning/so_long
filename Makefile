@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/03/08 10:15:28 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/03/08 14:31:10 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC_FILES	:=	so_long.c \
 				error.c \
 				map_utils.c \
 				initialize_data.c \
+				flood_fill.c \
 				print_tests.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
