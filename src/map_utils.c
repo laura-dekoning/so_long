@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/08 10:17:42 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/13 12:00:10 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,23 @@ t_point	find_position(char **map_as_d_array, char c)
 		y++;
 	}
 	return (position);
+}
+
+char	**copy_map(t_game *game)
+{
+	char **map_to_check;
+	int		i;
+
+	i = 0;
+	map_to_check = (char **)ft_calloc(game->height, sizeof(char *));
+	if (map_to_check == NULL)
+		error_message("Memory allocation failed!");
+	while (game->map[i] != NULL)
+	{
+		map_to_check[i] = ft_strdup(game->map[i]);
+		i++;
+	}
+	map_to_check[i] = NULL;
+
+	return (map_to_check);
 }

@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/11 21:44:17 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/13 15:48:20 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,24 @@
 # include "libft.h"
 # include "MLX42.h"
 
+# define PIXEL 64
+
 typedef struct	s_point
 {
 	int			x;
 	int			y;
 }				t_point;
+
+/*typedef struct s_images
+{
+	mlx_image_t	*player;
+	mlx_image_t	*exit;
+	mlx_image_t *collectable;
+	mlx_image_t *wall;
+	mlx_image_t *floor;
+	
+};*/
+
 
 typedef struct	s_game
 {
@@ -32,6 +45,7 @@ typedef struct	s_game
 	int			collectables;
 	int			collected;
 	int			steps;
+	mlx_t		*mlx;
 }				t_game;
 
 /*MAP*/
@@ -51,7 +65,8 @@ void	check_empty_file(char *map);
 void	check_walls(char **map, int width, int height);
 void	check_if_map_rectangular(char **map, int width);
 void	invalid_content_message(int p, int e, int c);
-int		flood_fill(t_game *game, int x, int y);
+bool	flood_fill(t_game *game, char **map, int x, int y);
+char	**copy_map(t_game *game);
 
 
 void	test_initialisation(t_game *game);
