@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/14 16:16:20 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/22 15:44:38 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void ft_hook(void* param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP) || mlx_is_key_down(mlx, MLX_KEY_W))
-		image->instances[0].y -= 32;
+		image->instances[0].y -= 64;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN) || mlx_is_key_down(mlx, MLX_KEY_S))
-		image->instances[0].y += 32;
+		image->instances[0].y += 64;
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT) || mlx_is_key_down(mlx, MLX_KEY_A))
-		image->instances[0].x -= 32;
+		image->instances[0].x -= 64;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT) || mlx_is_key_down(mlx, MLX_KEY_D))
-		image->instances[0].x += 32;
+		image->instances[0].x += 64;
 }
 
 int	main(int argc, char **argv)
@@ -67,7 +67,9 @@ int	main(int argc, char **argv)
 	if (len < 4 || (ft_strncmp(file + len - 4, ".ber", 4)))
 		error_message("Incorrect file format! Please provide a .ber file.");
 	game = init_game_data(file);
-	game->mlx = mlx_init(game->width * PIXEL, game->height * PIXEL, "so_long", false);
+	init_images(game);
+	printf("%p", game->img->player);
+	game->mlx = mlx_init(WIDTH, HEIGHT, "so_long", false);
 	if (!game->mlx)
 		error_message("Failed to initiliaze window.");
 	if (!(image = mlx_new_image(game->mlx, 64, 64)))

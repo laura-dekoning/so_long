@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/13 15:48:20 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/22 15:55:00 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "MLX42.h"
 
 # define PIXEL 64
+# define WIDTH 1920
+# define HEIGHT 1080
 
 typedef struct	s_point
 {
@@ -24,29 +26,29 @@ typedef struct	s_point
 	int			y;
 }				t_point;
 
-/*typedef struct s_images
+typedef struct		s_images
 {
-	mlx_image_t	*player;
-	mlx_image_t	*exit;
-	mlx_image_t *collectable;
-	mlx_image_t *wall;
-	mlx_image_t *floor;
-	
-};*/
+	mlx_texture_t	*player;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*collectable;
+	mlx_texture_t	*wall;
+	mlx_texture_t	*floor;
+}					t_images;
 
 
-typedef struct	s_game
+typedef struct		s_game
 {
-	char		**map;
-	int			width;
-	int			height;
-	t_point		player_pos;
-	t_point		exit_pos;
-	int			collectables;
-	int			collected;
-	int			steps;
-	mlx_t		*mlx;
-}				t_game;
+	char			**map;
+	int				width;
+	int				height;
+	t_point			player_pos;
+	t_point			exit_pos;
+	int				collectables;
+	int				collected;
+	int				steps;
+	mlx_t			*mlx;
+	t_images		img;
+}					t_game;
 
 /*MAP*/
 char	*read_mapfile(const char *file);
@@ -68,6 +70,8 @@ void	invalid_content_message(int p, int e, int c);
 bool	flood_fill(t_game *game, char **map, int x, int y);
 char	**copy_map(t_game *game);
 
+void	init_images(t_game *game);
+bool	get_texture(mlx_texture_t **img, char *path);
 
 void	test_initialisation(t_game *game);
 void	map_test(char **map);

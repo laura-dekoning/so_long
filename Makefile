@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/03/08 14:31:10 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/03/22 15:45:16 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC_FILES	:=	so_long.c \
 				map_utils.c \
 				initialize_data.c \
 				flood_fill.c \
+				images.c \
 				print_tests.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
@@ -65,6 +66,9 @@ norminette:
 	@norminette -R CheckForbiddenSourceHeader
 	@echo "${GREEN} Norm-i-netting complete. Files are NORM PROOF!${RESET}" 
 
+update:
+	@git submodule update --init --recursive --remote
+	
 clean:
 	@rm -rf $(OBJ_DIR)
 	@make -C $(LIBFT_DIR) clean > /dev/null
