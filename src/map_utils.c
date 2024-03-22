@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/13 12:00:10 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/14 16:03:53 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_point	find_position(char **map_as_d_array, char c)
 	int		x;
 	int		y;
 
+	position.x = 0;
+	position.y = 0;
 	y = 0;
 	while (map_as_d_array[y] != NULL)
 	{
