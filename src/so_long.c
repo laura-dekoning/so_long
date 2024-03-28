@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/22 15:44:38 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/28 20:29:36 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,7 @@ int	main(int argc, char **argv)
 		error_message("Incorrect file format! Please provide a .ber file.");
 	game = init_game_data(file);
 	init_images(game);
-	printf("%p", game->img->player);
-	game->mlx = mlx_init(WIDTH, HEIGHT, "so_long", false);
-	if (!game->mlx)
-		error_message("Failed to initiliaze window.");
-	if (!(image = mlx_new_image(game->mlx, 64, 64)))
-	{
-		mlx_close_window(game->mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	if (mlx_image_to_window(game->mlx, image, 0, 0) == -1)
-	{
-		mlx_close_window(game->mlx);
-		puts(mlx_strerror(mlx_errno));
-		return(EXIT_FAILURE);
-	}
-	
-	mlx_loop_hook(game->mlx, ft_randomize, game->mlx);
-	mlx_loop_hook(game->mlx, ft_hook, game->mlx);
-
+	render_map(game);
 	mlx_loop(game->mlx);
-	mlx_terminate(game->mlx);
 	return (EXIT_SUCCESS);
-
-
-	return (0);
 }

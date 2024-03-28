@@ -5,68 +5,48 @@
 /*                                                     +:+                    */
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/03/22 14:42:31 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/22 15:58:45 by lade-kon      ########   odam.nl         */
+/*   Created: 2024/03/28 13:11:09 by lade-kon      #+#    #+#                 */
+/*   Updated: 2024/03/28 21:13:55 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	argb_to_rgba(uint32_t *color)
-{
-	int	r;
-	int	g;
-	int	b;
-	int	a;
 
-	r = *color & 0xFF;
-	g = (*color >> 8) & 0xFF;
-	b = (*color >> 16) & 0xFF;
-	a = (*color >> 24) & 0xFF;
-	*color = r << 24 | g << 16 | b << 8 | a;
+void	get_image(t_game *game, mlx_image_t **img, mlx_texture_t *txt)
+{
+	*img = mlx_texture_to_image(game->mlx, txt);
+	if (!img)
+		error_message("Failed to get image.");
+	mlx_delete_texture(txt);
 }
 
-static void	fix_color_order(mlx_texture_t *txt)
-{
-	uint32_t	i;
-	uint32_t	j;
-
-	i = 0;
-	while (i < txt->height)
-	{
-		j = 0;
-		while (j < txt->width)
-		{
-			argb_to_rgba((uint32_t *)&txt->pixels[(txt->width * i + j) * 4]);
-			j++;
-		}
-		i++;
-	}
-}
-
-bool	get_texture(mlx_texture_t **img, char *path)
+void	get_texture(mlx_texture_t **txt, char *path)
 {
 	int	fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		*img = NULL;
-		return (false);
+		*txt = NULL;
+		error_message("No valid path.");
 	}
 	close(fd);
-	*img = mlx_load_png(path);
-	if (!img)
-		return (false);
-	fix_color_order(*img);
-	return (true);
+	*txt = mlx_load_png(path);
+	if (!txt)
+		error_message("Failed to load texture.");
 }
 
 void	init_images(t_game *game)
 {
-	get_texture(&game->img.player, "./assets/cat256x256.png");
-	get_texture(&game->img.wall, "assets/wall256x256.png");
-	get_texture(&game->img.floor, "assets/floor256x256.png");
-	get_texture(&game->img.exit, "assets/floor256x256.png");
-	get_texture(&game->img.collectable, "assets/floor256x256.png");
+	get_texture(&game->img.p, "assets/nyancat64x64.png");
+	get_image(game, &game->img.player, game->img.p);
+	get_texture(&game->img.w, "./assets/rock64x64.png");
+	get_image(game, &game->img.wall, game->img.w);
+	get_texture(&game->img.f, "./assets/floor64x64.png");
+	get_image(game, &game->img.floor, game->img.f);
+	get_texture(&game->img.e, "./assets/rocket64x64.png");
+	get_image(game, &game->img.exit, game->img.e);
+	get_texture(&game->img.c, "./assets/flower64x64.png");
+	get_image(game, &game->img.collectable, game->img.c);
 }

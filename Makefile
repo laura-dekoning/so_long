@@ -6,14 +6,14 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/03/22 15:45:16 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/03/28 20:11:07 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:=	so_long
 
 CC			:=	cc -Ofast -g
-CFLAGS		:=	-Wall -Werror -Wextra -g
+CFLAGS		:=	-Wall -Werror -Wextra -g -fsanitize=address
 
 LIBFT_DIR	:=	lib/libft
 LIBFT_A		:=	$(LIBFT_DIR)/libft.a
@@ -34,6 +34,7 @@ SRC_FILES	:=	so_long.c \
 				initialize_data.c \
 				flood_fill.c \
 				images.c \
+				render_map.c \
 				print_tests.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

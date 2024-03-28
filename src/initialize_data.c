@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/13 11:58:20 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/28 20:06:42 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ t_game	*init_game_struct(char **map_as_d_array, int width, int height)
 	game->collectables = find_amount_collectables(map_as_d_array);
 	game->collected = 0;
 	game->steps = 0;
+	game->mlx = mlx_init(PIXEL * game->width, PIXEL * game->height, "so_long", false);
+	if (!game->mlx)
+		error_message("Failed to initiliaze window.");
 	return (game);
 }
 

@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/22 15:55:00 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/28 20:25:43 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "MLX42.h"
 
 # define PIXEL 64
-# define WIDTH 1920
-# define HEIGHT 1080
+// # define WIDTH 1920
+// # define HEIGHT 1080
 
 typedef struct	s_point
 {
@@ -28,13 +28,17 @@ typedef struct	s_point
 
 typedef struct		s_images
 {
-	mlx_texture_t	*player;
-	mlx_texture_t	*exit;
-	mlx_texture_t	*collectable;
-	mlx_texture_t	*wall;
-	mlx_texture_t	*floor;
+	mlx_texture_t	*p;
+	mlx_texture_t	*e;
+	mlx_texture_t	*c;
+	mlx_texture_t	*w;
+	mlx_texture_t	*f;
+	mlx_image_t		*player;
+	mlx_image_t		*exit;
+	mlx_image_t		*collectable;
+	mlx_image_t		*wall;
+	mlx_image_t		*floor;
 }					t_images;
-
 
 typedef struct		s_game
 {
@@ -71,11 +75,14 @@ bool	flood_fill(t_game *game, char **map, int x, int y);
 char	**copy_map(t_game *game);
 
 void	init_images(t_game *game);
-bool	get_texture(mlx_texture_t **img, char *path);
+void	get_texture(mlx_texture_t **txt, char *path);
+void	get_image(t_game *game, mlx_image_t **img, mlx_texture_t *txt);
 
 void	test_initialisation(t_game *game);
 void	map_test(char **map);
 void	print_map(char **map);
+void	fill_background(t_game *game);
+void	render_map(t_game *game);
 
 
 #endif
