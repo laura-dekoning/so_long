@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/28 20:06:42 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/29 16:24:11 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_game	*init_game_data(const char *file)
 	map_as_d_array = ft_split(map_as_str, '\n');
 	width = ft_strlen(map_as_d_array[0]);
 	height = count_rows(map_as_d_array);
+	check_mapsize(width, height);
 	check_if_map_rectangular(map_as_d_array, width);
 	check_walls(map_as_d_array, width, height);
 	data = init_game_struct(map_as_d_array, width, height);

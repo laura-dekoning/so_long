@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/28 20:25:43 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/29 16:01:50 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	check_invalid_content(int i);
 void	check_empty_lines(char *map);
 void	check_empty_file(char *map);
 void	check_walls(char **map, int width, int height);
+void	check_mapsize(int width, int height);
 void	check_if_map_rectangular(char **map, int width);
 void	invalid_content_message(int p, int e, int c);
 bool	flood_fill(t_game *game, char **map, int x, int y);

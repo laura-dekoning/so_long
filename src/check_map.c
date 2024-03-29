@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/08 10:08:47 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/03/29 16:25:57 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,23 @@ void	check_if_map_rectangular(char **map, int width)
 			error_message("Map is not rectangular!");
 		i++;
 	}
+}
+
+void	check_mapsize(int width, int height)
+{
+	int	m_width;
+	int	m_height;
+
+	m_width = 0;
+	m_height = 0;
+	mlx_get_monitor_size(0, &m_width, &m_height);
+	if (!m_width || !m_height)
+	{
+		m_width = 3840;
+		m_height = 2160;
+	}
+	if (m_width < (width * PIXEL))
+		error_message("Map is too big!!");
+	if (m_height < (height * PIXEL))
+		error_message("Map is too big!!");
 }
