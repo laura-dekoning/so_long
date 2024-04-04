@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/13 15:11:48 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/04 13:46:14 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,4 @@ void	invalid_content_message(int p, int e, int c)
 		"Map is missing the player position.");
 	if (e < 1)
 		error_message("Map content is not valid! Map does not have an exit!");
-	
 }

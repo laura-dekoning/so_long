@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/29 16:01:50 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/04 19:31:51 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,20 @@ typedef struct		s_game
 
 /*MAP*/
 char	*read_mapfile(const char *file);
-t_game	*init_game_data(const char *file);
-t_game	*init_game_struct(char **map_as_d_array, int width, int height);
+void	init_game_data(t_game *game, const char *file);
+void	init_game_struct(t_game *game, char **map_as_d_array, int width, int height);
 int		count_rows(char **map_as_d_array);
 t_point	find_position(char **map_as_d_array, char c);
 int		find_amount_collectables(char **map_as_d_array);
 
 void	error_message(char *message);
 
+void	check_file(char *map);
 void	check_content(char *map);
 void	check_invalid_content(int i);
 void	check_empty_lines(char *map);
 void	check_empty_file(char *map);
+void	check_map(char **map, int width, int height);
 void	check_walls(char **map, int width, int height);
 void	check_mapsize(int width, int height);
 void	check_if_map_rectangular(char **map, int width);
@@ -85,5 +87,10 @@ void	print_map(char **map);
 void	fill_background(t_game *game);
 void	render_map(t_game *game);
 
+void	keyhooks(mlx_key_data_t keydata, void *param);
+void	move_up(t_game *game, char **map);
+void	move_down(t_game *game, char **map);
+void	move_left(t_game *game, char **map);
+void	move_right(t_game *game, char **map);
 
 #endif
