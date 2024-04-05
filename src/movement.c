@@ -6,17 +6,29 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/05 17:10:31 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 17:43:54 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 19:53:17 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	check_if_collectable_or_exit(t_game *game, char **map, int x, int y)
+{
+	int	to_collect;
 
-// void	check_if_collectable(t_game *game)
-// {
-// 	if ()
-// }
+	if (map[y][x] == 'C')
+	{
+		map[y][x] = '0';
+		game->collected++;
+		to_collect = game->collectables - game->collected;
+		ft_printf("Jeeeej. You collected a flower!!\n");
+		ft_printf("Flowers collected: %i\n", game->collected);
+		ft_printf("Flowers to collect: %i\n", to_collect);
+	}
+	if (map[y][x] == 'E' && (game->collected == game->collectables))
+		mlx_close_window(game->mlx);
+
+}
 
 void	do_movements(mlx_key_data_t keydata, void *param)
 {

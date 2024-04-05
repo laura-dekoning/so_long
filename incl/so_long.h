@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 17:44:46 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 19:35:35 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ void	init_game_struct(t_game *game, char **map_as_d_array, int width, int height
 int		count_rows(char **map_as_d_array);
 t_point	find_position(char **map_as_d_array, char c);
 int		find_amount_collectables(char **map_as_d_array);
+bool	flood_fill(t_game *game, char **map, int x, int y);
+char	**copy_map(t_game *game);
 
 void	error_message(char *message);
+void	invalid_content_message(int p, int e, int c);
+void	*ft_calloc_errorcheck(size_t num_elem, size_t size_elem);
 
 void	check_file(char *map);
 void	check_content(char *map);
@@ -71,15 +75,13 @@ void	check_map(char **map, int width, int height);
 void	check_walls(char **map, int width, int height);
 void	check_mapsize(int width, int height);
 void	check_if_map_rectangular(char **map, int width);
-void	invalid_content_message(int p, int e, int c);
-bool	flood_fill(t_game *game, char **map, int x, int y);
-char	**copy_map(t_game *game);
 
 void	init_images(t_game *game);
 void	get_texture(mlx_texture_t **txt, char *path);
 void	get_image(t_game *game, mlx_image_t **img, mlx_texture_t *txt);
 void	set_depth(t_game *game);
 void	loopinstance(int depth, mlx_image_t *image);
+void	check_if_collectable_or_exit(t_game *game, char **map, int x, int y);
 
 void	test_initialisation(t_game *game);
 void	map_test(char **map);
@@ -92,6 +94,5 @@ void	move_up(t_game *game, char **map, int x, int y);
 void	move_down(t_game *game, char **map, int x, int y);
 void	move_left(t_game *game, char **map, int x, int y);
 void	move_right(t_game *game, char **map, int x, int y);
-void	*ft_calloc_errorcheck(size_t num_elem, size_t size_elem);
 
 #endif

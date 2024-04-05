@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/04 19:10:31 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 17:35:56 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 19:32:53 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	move_up(t_game *game, char **map, int x, int y)
 		game->player_pos.y--;
 		game->steps++;
 		ft_printf("Steps: %i\n", game->steps);
+		check_if_collectable_or_exit(game, map, x, game->player_pos.y);
 	}
 }
 
@@ -31,6 +32,7 @@ void	move_down(t_game *game, char **map, int x, int y)
 		game->player_pos.y++;
 		game->steps++;
 		ft_printf("Steps: %i\n", game->steps);
+		check_if_collectable_or_exit(game, map, x, game->player_pos.y);
 	}
 }
 
@@ -42,6 +44,7 @@ void	move_left(t_game *game, char **map, int x, int y)
 		game->player_pos.x--;
 		game->steps++;
 		ft_printf("Steps: %i\n", game->steps);
+		check_if_collectable_or_exit(game, map, game->player_pos.x, y);
 	}
 }
 
@@ -53,6 +56,7 @@ void	move_right(t_game *game, char **map, int x, int y)
 		game->player_pos.x++;
 		game->steps++;
 		ft_printf("Steps: %i\n", game->steps);
+		check_if_collectable_or_exit(game, map, game->player_pos.x, y);
 	}
 }
 

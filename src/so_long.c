@@ -6,12 +6,18 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 17:46:03 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 19:19:36 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/* TO DO LIST:
+- Free map when exit.
+- Destroy image of collectable if collected.
+- Print collected. 
+- Fix memory leaks.
+- Make exit possible. 
+*/
 int	main(int argc, char **argv)
 {
 	t_game		*game;
