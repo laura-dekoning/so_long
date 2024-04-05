@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/04 19:11:48 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/05 17:13:07 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,8 @@ SRC_FILES	:=	so_long.c \
 				flood_fill.c \
 				images.c \
 				render_map.c \
+				movement.c \
+				ft_malloc.c \
 				hooks.c
 SRC			:=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

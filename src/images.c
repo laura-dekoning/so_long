@@ -6,12 +6,32 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/03/28 13:11:09 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/28 21:13:55 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 17:44:16 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void	loopinstance(int depth, mlx_image_t *image)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < image->count)
+	{
+		mlx_set_instance_depth(&image->instances[i], depth);
+		i++;
+	}
+}
+
+void	set_depth(t_game *game)
+{
+	loopinstance(2, game->img.wall);
+	loopinstance(1, game->img.floor);
+	loopinstance(3, game->img.exit);
+	loopinstance(4, game->img.collectable);
+	loopinstance(5, game->img.player);
+}
 
 void	get_image(t_game *game, mlx_image_t **img, mlx_texture_t *txt)
 {

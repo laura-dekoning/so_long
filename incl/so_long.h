@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 16:41:40 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 17:44:46 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ char	**copy_map(t_game *game);
 void	init_images(t_game *game);
 void	get_texture(mlx_texture_t **txt, char *path);
 void	get_image(t_game *game, mlx_image_t **img, mlx_texture_t *txt);
+void	set_depth(t_game *game);
+void	loopinstance(int depth, mlx_image_t *image);
 
 void	test_initialisation(t_game *game);
 void	map_test(char **map);
@@ -85,7 +87,7 @@ void	print_map(char **map);
 void	fill_background(t_game *game);
 void	render_map(t_game *game);
 
-void	keyhooks(mlx_key_data_t keydata, void *param);
+void	do_movements(mlx_key_data_t keydata, void *param);
 void	move_up(t_game *game, char **map, int x, int y);
 void	move_down(t_game *game, char **map, int x, int y);
 void	move_left(t_game *game, char **map, int x, int y);

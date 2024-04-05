@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 17:07:56 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 17:46:03 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	main(int argc, char **argv)
 	init_game_data(game, file);
 	init_images(game);
 	render_map(game);
-	mlx_key_hook(game->mlx, &keyhooks, game);
+	set_depth(game);
+	mlx_key_hook(game->mlx, &do_movements, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
 	return (EXIT_SUCCESS);
