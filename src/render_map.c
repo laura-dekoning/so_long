@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/03/28 15:36:58 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/03/28 20:32:37 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 16:07:52 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ void	render_map(t_game *game)
 				if(mlx_image_to_window(game->mlx, game->img.wall, x * PIXEL, y * PIXEL) < 0 )
 					error_message("Failed to put image to window");
 			}
-			if (game->map[y][x] == 'P')
-			{
-				if(mlx_image_to_window(game->mlx, game->img.player, x * PIXEL, y * PIXEL) < 0 )
-					error_message("Failed to put image to window");
-			}
 			if (game->map[y][x] == 'E')
 			{
 				if(mlx_image_to_window(game->mlx, game->img.exit, x * PIXEL, y * PIXEL) < 0 )
@@ -63,6 +58,11 @@ void	render_map(t_game *game)
 			if (game->map[y][x] == 'C')
 			{
 				if(mlx_image_to_window(game->mlx, game->img.collectable, x * PIXEL, y * PIXEL) < 0 )
+					error_message("Failed to put image to window");
+			}
+			if (game->map[y][x] == 'P')
+			{
+				if(mlx_image_to_window(game->mlx, game->img.player, x * PIXEL, y * PIXEL) < 0 )
 					error_message("Failed to put image to window");
 			}
 			x++;

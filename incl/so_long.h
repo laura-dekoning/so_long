@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/04 19:31:51 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/05 16:41:40 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include "MLX42.h"
 
 # define PIXEL 64
-// # define WIDTH 1920
-// # define HEIGHT 1080
 
 typedef struct	s_point
 {
@@ -88,9 +86,10 @@ void	fill_background(t_game *game);
 void	render_map(t_game *game);
 
 void	keyhooks(mlx_key_data_t keydata, void *param);
-void	move_up(t_game *game, char **map);
-void	move_down(t_game *game, char **map);
-void	move_left(t_game *game, char **map);
-void	move_right(t_game *game, char **map);
+void	move_up(t_game *game, char **map, int x, int y);
+void	move_down(t_game *game, char **map, int x, int y);
+void	move_left(t_game *game, char **map, int x, int y);
+void	move_right(t_game *game, char **map, int x, int y);
+void	*ft_calloc_errorcheck(size_t num_elem, size_t size_elem);
 
 #endif
