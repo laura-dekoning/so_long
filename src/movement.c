@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/05 17:10:31 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 19:53:17 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/07 15:31:54 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_if_collectable_or_exit(t_game *game, char **map, int x, int y)
 		map[y][x] = '0';
 		game->collected++;
 		to_collect = game->collectables - game->collected;
-		ft_printf("Jeeeej. You collected a flower!!\n");
+		ft_printf("Good job. You collected a flower!!\n");
 		ft_printf("Flowers collected: %i\n", game->collected);
 		ft_printf("Flowers to collect: %i\n", to_collect);
 	}
