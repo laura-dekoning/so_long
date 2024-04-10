@@ -6,13 +6,12 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/07 15:31:46 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/10 17:11:30 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 /* TO DO LIST:
-- Destroy image of collectable if collected.
 - Free map when exit.
 - Fix memory leaks.
 */
