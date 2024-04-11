@@ -6,10 +6,13 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/10 17:48:53 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/11 10:20:07 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_all()
+void	free_all(t_game *game)
+{
+	
+}

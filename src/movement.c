@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/05 17:10:31 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/10 16:59:45 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/11 10:55:51 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_if_collectable_or_exit(t_game *game, char **map, int x, int y)
 	{
 		game->collected++;
 		remain = game->collectables - game->collected;
-		ft_printf(B_GREEN"Good job!! "BLUE"You collected a flower.\n"DEFAULT);
+		ft_printf(B_G"Good job!! "B"You collected a flower.\n"DEF);
 		ft_printf("Collected: %i\tTo collect: %i\n", game->collected, remain);
 		i = 0;
 		while (i < game->collectables)
