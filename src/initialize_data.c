@@ -6,20 +6,20 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/10 17:11:18 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/11 12:48:03 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	init_game_struct(t_game *game, char **map_as_d_array, int width, int height)
+void	init_game_struct(t_game *game, char **map_as_arr, int width, int height)
 {
-	game->map = map_as_d_array;
+	game->map = map_as_arr;
 	game->width = width;
 	game->height = height;
-	game->player_pos = find_position(map_as_d_array, 'P');
-	game->exit_pos = find_position(map_as_d_array, 'E');
-	game->collectables = find_amount_collectables(map_as_d_array);
+	game->player_pos = find_position(map_as_arr, 'P');
+	game->exit_pos = find_position(map_as_arr, 'E');
+	game->collectables = find_amount_collectables(map_as_arr);
 	game->collected = 0;
 	game->steps = 0;
 	game->mlx = mlx_init(PIXEL * game->width, PIXEL * game->height, "so_long", false);
@@ -30,21 +30,23 @@ void	init_game_struct(t_game *game, char **map_as_d_array, int width, int height
 void	init_game_data(t_game *game, const char *file)
 {
 	char	*map_as_str;
-	char	**map_as_d_array;
+	char	**map_as_arr;
 	char	**floodfill;
 	int		width;
 	int		height;
 
 	map_as_str = read_mapfile(file);
 	check_file(map_as_str);
-	map_as_d_array = ft_split(map_as_str, '\n');
-	width = ft_strlen(map_as_d_array[0]);
-	height = count_rows(map_as_d_array);
-	check_map(map_as_d_array, width, height);
-	init_game_struct(game, map_as_d_array, width, height);
+	map_as_arr = ft_split(map_as_str, '\n');
+	width = ft_strlen(map_as_arr[0]);
+	height = count_rows(map_as_arr);
+	check_map(map_as_arr, width, height);
+	init_game_struct(game, map_as_arr, width, height);
 	floodfill = copy_map(game);
 	if (flood_fill(game, floodfill, game->player_pos.x, game->player_pos.y) == false)
 		error_message("Floodfill FAILED!");
+	free_map(floodfill);
+	free(map_as_str);
 }
 
 char	*read_mapfile(const char *file)

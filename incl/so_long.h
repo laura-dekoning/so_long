@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:46:22 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/11 10:42:02 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/11 12:16:28 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ typedef struct		s_game
 /*MAP*/
 char	*read_mapfile(const char *file);
 void	init_game_data(t_game *game, const char *file);
-void	init_game_struct(t_game *game, char **map_as_d_array, int width, int height);
-int		count_rows(char **map_as_d_array);
-t_point	find_position(char **map_as_d_array, char c);
-int		find_amount_collectables(char **map_as_d_array);
+void	init_game_struct(t_game *game, char **map_as_arr, int width, int height);
+int		count_rows(char **map_as_arr);
+t_point	find_position(char **map_as_arr, char c);
+int		find_amount_collectables(char **map_as_arr);
 bool	flood_fill(t_game *game, char **map, int x, int y);
 char	**copy_map(t_game *game);
 
@@ -96,5 +96,8 @@ void	move_up(t_game *game, char **map, int x, int y);
 void	move_down(t_game *game, char **map, int x, int y);
 void	move_left(t_game *game, char **map, int x, int y);
 void	move_right(t_game *game, char **map, int x, int y);
+
+void	free_all(t_game *game);
+void	free_map(char **map);
 
 #endif

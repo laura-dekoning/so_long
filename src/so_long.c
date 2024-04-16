@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/11 10:27:09 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/11 11:28:33 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game->mlx, &do_movements, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);
+	free_all(game);
 	return (EXIT_SUCCESS);
 }

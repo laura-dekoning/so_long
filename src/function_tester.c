@@ -1,18 +1,18 @@
 #include "so_long.h"
 
-t_point	find_position(char **map_as_d_array, char c)
+t_point	find_position(char **map_as_arr, char c)
 {
 	t_point	position;
 	int		x;
 	int		y;
 
 	y = 0;
-	while (map_as_d_array[y] != NULL)
+	while (map_as_arr[y] != NULL)
 	{
 		x = 0;
-		while (map_as_d_array[y][x] != '\0')
+		while (map_as_arr[y][x] != '\0')
 		{
-			if (map_as_d_array[y][x] == c)
+			if (map_as_arr[y][x] == c)
 			{
 				position.x = x;
 				position.y = y;
@@ -52,14 +52,14 @@ char	**initialize_data(const char *file)
 {
 	// t_game	*data;
 	char	*map_as_str;
-	char	**map_as_d_array;
+	char	**map_as_arr;
 
 	map_as_str = read_mapfile(file);
-	map_as_d_array = ft_split(map_as_str, '\n');
-	// data = initialize_struct(map_as_d_array);
+	map_as_arr = ft_split(map_as_str, '\n');
+	// data = initialize_struct(map_as_arr);
 
 
-	return (map_as_d_array);
+	return (map_as_arr);
 }
 
 int	main(int argc, char **argv)
