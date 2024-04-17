@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/11 12:48:03 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/17 16:40:03 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_game_struct(t_game *game, char **map_as_arr, int width, int height)
 	game->collectables = find_amount_collectables(map_as_arr);
 	game->collected = 0;
 	game->steps = 0;
-	game->mlx = mlx_init(PIXEL * game->width, PIXEL * game->height, "so_long", false);
+	game->mlx = mlx_init(PIXEL * width, PIXEL * height, "so_long", false);
 	if (!game->mlx)
 		error_message("Failed to initiliaze window.");
 }
@@ -31,7 +31,6 @@ void	init_game_data(t_game *game, const char *file)
 {
 	char	*map_as_str;
 	char	**map_as_arr;
-	char	**floodfill;
 	int		width;
 	int		height;
 
@@ -42,10 +41,7 @@ void	init_game_data(t_game *game, const char *file)
 	height = count_rows(map_as_arr);
 	check_map(map_as_arr, width, height);
 	init_game_struct(game, map_as_arr, width, height);
-	floodfill = copy_map(game);
-	if (flood_fill(game, floodfill, game->player_pos.x, game->player_pos.y) == false)
-		error_message("Floodfill FAILED!");
-	free_map(floodfill);
+	check_path(game);
 	free(map_as_str);
 }
 
@@ -59,7 +55,7 @@ char	*read_mapfile(const char *file)
 	map_as_str = ft_calloc(1, 1);
 	if (map_as_str == NULL)
 		error_message("Allocation failed!");
-	while(1)
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (line)
@@ -68,7 +64,7 @@ char	*read_mapfile(const char *file)
 			free(line);
 		}
 		else
-			break;
+			break ;
 	}
 	close(fd);
 	return (map_as_str);

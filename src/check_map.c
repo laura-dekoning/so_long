@@ -6,11 +6,25 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/04 13:49:55 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/17 16:38:18 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	check_path(t_game *game)
+{
+	char	**floodfill;
+	int		p_x;
+	int		p_y;
+
+	floodfill = copy_map(game);
+	p_x = game->player_pos.x;
+	p_y = game->player_pos.y;
+	if (flood_fill(game, floodfill, p_x, p_y) == false)
+		error_message("Floodfill FAILED!");
+	free_map(floodfill);
+}
 
 void	check_walls(char **map, int width, int height)
 {
@@ -21,10 +35,8 @@ void	check_walls(char **map, int width, int height)
 	{
 		if (map[0][i] != '1')
 			error_message("Map is not surrounded by walls!");
-		
 		if (map[height - 1][i] != '1')
 			error_message("Map is not surrounded by walls!");
-
 		i++;
 	}
 	i = 0;

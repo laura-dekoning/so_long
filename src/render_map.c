@@ -6,11 +6,49 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/03/28 15:36:58 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 16:07:52 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/17 17:35:05 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	place_flower_or_player(t_game *game, char c, int x, int y)
+{
+	int	x_pix;
+	int	y_pix;
+
+	x_pix = x * PIXEL;
+	y_pix = y * PIXEL;
+	if (c == 'C')
+	{
+		if (mlx_image_to_window(game->mlx, game->img.flower, x_pix, y_pix) < 0)
+			error_message("Failed to put image to window");
+	}
+	if (c == 'P')
+	{
+		if (mlx_image_to_window(game->mlx, game->img.player, x_pix, y_pix) < 0)
+			error_message("Failed to put image to window");
+	}
+}
+
+void	place_floor_or_exit(t_game *game, char c, int x, int y)
+{
+	int	x_pix;
+	int	y_pix;
+
+	x_pix = x * PIXEL;
+	y_pix = y * PIXEL;
+	if (c == '1')
+	{
+		if (mlx_image_to_window(game->mlx, game->img.wall, x_pix, y_pix) < 0)
+			error_message("Failed to put image to window");
+	}
+	if (c == 'E')
+	{
+		if (mlx_image_to_window(game->mlx, game->img.exit, x_pix, y_pix) < 0)
+			error_message("Failed to put image to window");
+	}
+}
 
 void	fill_background(t_game *game)
 {
@@ -23,7 +61,8 @@ void	fill_background(t_game *game)
 		x = 0;
 		while (x <= game->width)
 		{
-			if(mlx_image_to_window(game->mlx, game->img.floor, x * PIXEL, y * PIXEL) < 0)
+			if (mlx_image_to_window(game->mlx, game->img.floor, \
+				x * PIXEL, y * PIXEL) < 0)
 				error_message("Failed to put image to window");
 			x++;
 		}
@@ -46,25 +85,13 @@ void	render_map(t_game *game)
 			if (game->map[y][x] == '0')
 				x++;
 			if (game->map[y][x] == '1')
-			{
-				if(mlx_image_to_window(game->mlx, game->img.wall, x * PIXEL, y * PIXEL) < 0 )
-					error_message("Failed to put image to window");
-			}
+				place_floor_or_exit(game, '1', x, y);
 			if (game->map[y][x] == 'E')
-			{
-				if(mlx_image_to_window(game->mlx, game->img.exit, x * PIXEL, y * PIXEL) < 0 )
-					error_message("Failed to put image to window");
-			}			
+				place_floor_or_exit(game, 'E', x, y);
 			if (game->map[y][x] == 'C')
-			{
-				if(mlx_image_to_window(game->mlx, game->img.collectable, x * PIXEL, y * PIXEL) < 0 )
-					error_message("Failed to put image to window");
-			}
+				place_flower_or_player(game, 'C', x, y);
 			if (game->map[y][x] == 'P')
-			{
-				if(mlx_image_to_window(game->mlx, game->img.player, x * PIXEL, y * PIXEL) < 0 )
-					error_message("Failed to put image to window");
-			}
+				place_flower_or_player(game, 'P', x, y);
 			x++;
 		}
 		y++;

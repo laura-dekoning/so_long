@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/12 08:18:27 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/17 19:19:48 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ MLX_DIR		:=	lib/MLX42
 MLX42_A		:=	$(MLX_DIR)/build/libmlx42.a
 MLX_FLAGS	:=	-ldl -lglfw -pthread -lm
 
-INCL_SO_LONG:=	./incl
+INCLS_SO_LONG:=	incl
 INCLS_LIBFT	:=	$(LIBFT_DIR)/incl
 INCLS_MLX42	:=	$(MLX_DIR)/include/MLX42
-INCLUDES	:=	-I $(INCL_SO_LONG) -I $(INCLS_LIBFT) -I $(INCLS_MLX42)
+INCLUDES	:=	-I $(INCLS_SO_LONG) -I $(INCLS_LIBFT) -I $(INCLS_MLX42)
 
 SRC_DIR		:=	src
 SRC_FILES	:=	so_long.c \

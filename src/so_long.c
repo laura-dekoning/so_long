@@ -6,15 +6,12 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/11 11:28:33 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/17 15:51:31 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-/* TO DO LIST:
-- Free map when exit.
-- Fix memory leaks.
-*/
+
 int	main(int argc, char **argv)
 {
 	t_game		*game;
@@ -31,7 +28,6 @@ int	main(int argc, char **argv)
 	init_game_data(game, file);
 	init_images(game);
 	render_map(game);
-	// set_depth(game);
 	mlx_key_hook(game->mlx, &do_movements, game);
 	mlx_loop(game->mlx);
 	mlx_terminate(game->mlx);

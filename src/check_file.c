@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/04 13:42:55 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/04 13:51:19 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/17 15:52:01 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_empty_lines(char *map)
 void	check_empty_file(char *map)
 {
 	if (map[0] == '\0')
-			error_message("Map is empty!!");
+		error_message("Map is empty!!");
 }
 
 void	check_file(char *map)

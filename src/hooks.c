@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/04 19:10:31 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/05 19:32:53 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/17 15:47:54 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ void	move_right(t_game *game, char **map, int x, int y)
 		check_if_collectable_or_exit(game, map, game->player_pos.x, y);
 	}
 }
-

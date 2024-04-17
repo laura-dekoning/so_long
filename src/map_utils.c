@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/11 12:16:28 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/17 15:56:05 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	count_rows(char **map_as_arr)
 		i++;
 	return (i);
 }
+
 int	find_amount_collectables(char **map_as_arr)
 {
 	int	c;
@@ -72,7 +73,7 @@ t_point	find_position(char **map_as_arr, char c)
 
 char	**copy_map(t_game *game)
 {
-	char **map_to_check;
+	char	**map_to_check;
 	int		i;
 
 	i = 0;
@@ -85,6 +86,5 @@ char	**copy_map(t_game *game)
 		i++;
 	}
 	map_to_check[i] = NULL;
-
 	return (map_to_check);
 }
