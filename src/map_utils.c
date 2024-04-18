@@ -6,23 +6,23 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/02/23 17:43:41 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/17 15:56:05 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/18 15:30:46 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_rows(char **map_as_arr)
+int	count_rows(char **map_arr)
 {
 	int	i;
 
 	i = 0;
-	while (map_as_arr[i] != NULL)
+	while (map_arr[i] != NULL)
 		i++;
 	return (i);
 }
 
-int	find_amount_collectables(char **map_as_arr)
+int	find_amount_collectables(char **map_arr)
 {
 	int	c;
 	int	x;
@@ -30,12 +30,12 @@ int	find_amount_collectables(char **map_as_arr)
 
 	y = 0;
 	c = 0;
-	while (map_as_arr[y] != NULL)
+	while (map_arr[y] != NULL)
 	{
 		x = 0;
-		while (map_as_arr[y][x] != '\0')
+		while (map_arr[y][x] != '\0')
 		{
-			if (map_as_arr[y][x] == 'C')
+			if (map_arr[y][x] == 'C')
 				c++;
 			x++;
 		}
@@ -44,7 +44,7 @@ int	find_amount_collectables(char **map_as_arr)
 	return (c);
 }
 
-t_point	find_position(char **map_as_arr, char c)
+t_point	find_position(char **map_arr, char c)
 {
 	t_point	position;
 	int		x;
@@ -53,12 +53,12 @@ t_point	find_position(char **map_as_arr, char c)
 	position.x = 0;
 	position.y = 0;
 	y = 0;
-	while (map_as_arr[y] != NULL)
+	while (map_arr[y] != NULL)
 	{
 		x = 0;
-		while (map_as_arr[y][x] != '\0')
+		while (map_arr[y][x] != '\0')
 		{
-			if (map_as_arr[y][x] == c)
+			if (map_arr[y][x] == c)
 			{
 				position.x = x;
 				position.y = y;

@@ -6,7 +6,7 @@
 /*   By: lade-kon <lade-kon@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/04/10 16:45:43 by lade-kon      #+#    #+#                 */
-/*   Updated: 2024/04/11 11:15:15 by lade-kon      ########   odam.nl         */
+/*   Updated: 2024/04/18 15:45:25 by lade-kon      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 
 # include "colors.h"
 
-# define DUP_P "Map content is not valid! \
-Map contains more than 1"B_P" player."DEF
-# define DUP_E	"Map content is not valid! \
-Map contains more than 1"B_O" exit."DEF
-# define DUP_P_E	"Map content is not valid! \
-Map contains"B_P" player"DEF" and"B_O" exit"B_B" duplicates."DEF
-# define DUP_NO_C	"Map content is not valid! \
-Map contains"B_B" duplicates"DEF " and no"B_G" collectables."DEF
-# define NO_P "Map content is not valid! We're missing a"B_P" player."DEF
-# define NO_E "Map content is not valid! There is no"B_O" exit."DEF
-# define NO_C "Map content is not valid! \
-No"B_G" collectables"DEF" available."
+# define DUP_P "Map is not valid! Map has more than 1 player."
+# define DUP_E "Map is not valid! Map has more than 1 exit."
+# define DUP_P_E "Map is not valid! Map has player and exit duplicates."
+# define DUP_NO_C "Map is not valid! Map has duplicates and no collectables."
+# define NO_P "Map is not valid! We're missing a player."
+# define NO_E "Map is not valid! There is no exit."
+# define NO_C "Map is not valid! No collectables available."
 
 #endif
