@@ -6,7 +6,7 @@
 #    By: lade-kon <lade-kon@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/02/23 17:43:35 by lade-kon      #+#    #+#                  #
-#    Updated: 2024/04/17 19:19:48 by lade-kon      ########   odam.nl          #
+#    Updated: 2024/04/18 18:13:26 by lade-kon      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ $(LIBFT_A):
 	@make -C $(LIBFT_DIR) > /dev/null
 
 $(NAME) : $(OBJ) $(MLX42_A) $(LIBFT_A)
-	@$(CC) $(OBJ) $(CFLAGS) $(INCLUDES) $(MLX42_A) $(LIBFT_A) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) $(MLX42_A) $(LIBFT_A) $(MLX_FLAGS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
